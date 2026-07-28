@@ -4,31 +4,35 @@ from materials.models import Lesson, Course
 from materials.serializers import LessonSerializer, CourseSerializer
 
 
-class LessonViewSet(ModelViewSet):
+class CourseViewSet(ModelViewSet):
+    """CRUD для курсов через ViewSet"""
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
 
 
-class CourseCreateAPIView(CreateAPIView):
+class LessonCreateAPIView(CreateAPIView):
+    """Создание урока"""
+    serializer_class = CourseSerializer
+
+
+class LessonListApiView(ListAPIView):
+    """Список уроков"""
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
 
-class CourseListApiView(ListAPIView):
+class LessonRetrieveAPIView(RetrieveAPIView):
+    """Получение одного урока"""
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
 
-class CourseRetrieveAPIView(RetrieveAPIView):
+class LessonUpdateAPIView(UpdateAPIView):
+    """Обновление урока"""
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
 
-class CourseUpdateAPIView(UpdateAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-
-
-class CourseDestroyAPIView(DestroyAPIView):
-    queryset = Course.objects.all()
+class LessonDestroyAPIView(DestroyAPIView):
+    """Удаление урока"""
     serializer_class = CourseSerializer
